@@ -25,12 +25,32 @@ const usePlayPiece = () => {
       i === col ? [...column, player] : column
     );
 
+    function winDiagonally(down: boolean = false): number[] {
+      
+
+      let positionX = col - 3;
+      let positionY = down ? row + 3 : row - 3;
+      
+      const result: number[] = [];
+
+      for (let i = 0; i <= 6; i++) {
+
+        if(positionX >=0 && positionX < 7 && positionY >=0 && positionY <6)
+        result.push(newBoard[positionX][positionY]);
+        positionX++;
+        positionY = down ? positionY - 1 : positionY + 1;
+      }
+      return result;
+    }
     const row = newBoard[col].length - 1;
 
     if (
       testWin(newBoard[col]) || // Did win vertically
-      testWin(newBoard.map((col) => col[row] || 0)) // Did win horizontally
+      testWin(newBoard.map((col) => col[row] || 0)) || // Did win horizontally
       // TODO: Did win diagonally
+
+      testWin(winDiagonally()) || // upwards
+      testWin(winDiagonally(true)) // down
     ) {
       setGameOver(true);
     } else {
