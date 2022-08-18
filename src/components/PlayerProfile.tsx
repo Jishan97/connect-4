@@ -1,5 +1,5 @@
 import { FC, SyntheticEvent } from "react";
-import { useRecoilValue, useResetRecoilState, useRecoilState } from "recoil";
+import {  useRecoilState } from "recoil";
 import {
     FormControl,
     FormLabel,
@@ -8,7 +8,7 @@ import {
     Divider,
     Select,
     Button,
-    Box, Flex, Heading
+    Box, Heading
 } from '@chakra-ui/react'
 
 
@@ -41,6 +41,7 @@ const PlayerProfile: FC = () => {
         const player2Color = target.player2Color.value;
 
 
+
         setPlayerName({ 1: player1Name, 2: player2Name })
         setPlayerColor({ 1: player1Color, 2: player2Color })
         setPlayerNameSet(true)
@@ -59,12 +60,12 @@ const PlayerProfile: FC = () => {
                 <Box display="flex" gridGap={4} alignItems="center" justifyContent="space-between">
                     <FormControl>
                         <FormLabel>Enter Player 1 Name</FormLabel>
-                        <Input name='player1Name' type='text' />
+                        <Input name='player1Name' type='text' isRequired />
                     </FormControl>
 
                     <FormControl>
                         <FormLabel>Enter Player 1 Color</FormLabel>
-                        <Select name='player1Color' placeholder='Select color'>
+                        <Select name='player1Color' placeholder='Select color' >
                             <option value='#f6e58d'>Beekeeper</option>
                             <option value='#ffbe76'>Spiced Nector</option>
                             <option value='#ff7979'>Pink Glamour</option>
@@ -80,7 +81,7 @@ const PlayerProfile: FC = () => {
                 <Box display="flex" gridGap={4} alignItems="center" justifyContent="space-between">
                     <FormControl>
                         <FormLabel>Enter Player 2 Name</FormLabel>
-                        <Input name='player2Name' type='text' />
+                        <Input name='player2Name' type='text' isRequired/>
                     </FormControl>
 
                     <FormControl>
