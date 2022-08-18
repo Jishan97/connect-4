@@ -1,7 +1,7 @@
 import { Heading } from "@chakra-ui/react";
 import { FC } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { gameOverState, playerState, playerNameState, isNameSetState } from "state";
+import { gameOverState, playerState, playerNameState, isNameSetState, playerColorState } from "state";
 
 const GameProgress: FC = () => {
   const player = useRecoilValue(playerState);
@@ -9,7 +9,7 @@ const GameProgress: FC = () => {
   const [playerName, setPlayerName] = useRecoilState(playerNameState);
   const isPlayer = useRecoilValue(isNameSetState);
   const name = playerName[player];
-
+  
   return (
 
     <div>

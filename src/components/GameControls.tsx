@@ -8,12 +8,14 @@ const GameControls: FC = () => {
   const resetBoard = useResetRecoilState(boardState);
   const resetPlayer = useResetRecoilState(playerState);
   const resetGameOver = useResetRecoilState(gameOverState);
+  const restName = useResetRecoilState(isNameSetState);
   const isNameSet = useRecoilValue(isNameSetState);
 
   const handleReset = () => {
     resetBoard();
     resetPlayer();
     resetGameOver();
+    restName();
   };
 
   return (
